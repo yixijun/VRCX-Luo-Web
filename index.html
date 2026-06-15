@@ -6,204 +6,177 @@
         <title>VRCX-Luo | VRChat 社交记录与管理工具</title>
         <meta
             name="description"
-            content="VRCX-Luo 是面向 VRChat 用户的桌面工具分支，提供好友动态、资料归档、多账户与数据可视化等增强体验。" />
+            content="VRCX-Luo 基于 FuLuTang/VRCX-jirai 继续修改，使用 AI 辅助维护好友日志、归档、多账户、VR 叠加通知和本地数据体验。" />
         <meta property="og:title" content="VRCX-Luo" />
         <meta
             property="og:description"
-            content="VRCX-Luo 基于 FuLuTang/VRCX-jirai 继续修改；由于原分支长期未更新，使用 AI 辅助维护与补充体验改进。" />
+            content="像应用本体一样浏览 VRCX-Luo 的好友日志、归档、多账户和 VR 通知功能。" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="./assets/VRCX.png" />
         <link rel="icon" href="./assets/VRCX.png" />
         <link rel="stylesheet" href="./styles.css" />
+        <script src="./app.js" defer></script>
     </head>
     <body>
-        <header class="site-header">
-            <a class="brand" href="#top" aria-label="VRCX-Luo 首页">
-                <img src="./assets/VRCX.png" alt="" />
-                <span>VRCX-Luo</span>
-            </a>
-            <nav aria-label="页面导航">
-                <a href="#features">功能</a>
-                <a href="#notice">说明</a>
-                <a href="#repo">仓库</a>
-            </nav>
-            <a class="header-action" href="https://github.com/yixijun/VRCX-Luo" target="_blank" rel="noreferrer">
-                GitHub
-            </a>
-        </header>
-
-        <main id="top">
-            <section class="hero">
-                <div class="hero-copy">
-                    <p class="eyebrow">VRChat companion app</p>
-                    <h1>把 VRChat 的社交记录整理得更清楚。</h1>
-                    <p class="lede">
-                        VRCX-Luo 基于
-                        <a class="text-link" href="https://github.com/FuLuTang/VRCX-jirai" target="_blank" rel="noreferrer">FuLuTang/VRCX-jirai</a>
-                        继续修改；由于该分支长期未继续更新，我使用 AI 辅助进行维护、修复问题，并把常用体验重新打磨。它聚焦好友动态、资料归档、状态统计、多账户、VR 叠加通知和本地数据可视化，让常用信息更容易查看、比较与回溯。
-                    </p>
-                    <div class="hero-actions">
-                        <a class="button primary" href="https://github.com/yixijun/VRCX-Luo/releases/latest" target="_blank" rel="noreferrer">
-                            下载最新版本
-                        </a>
-                        <a class="button secondary" href="https://github.com/yixijun/VRCX-Luo" target="_blank" rel="noreferrer">
-                            查看源码仓库
-                        </a>
-                    </div>
-                    <div class="meta-row" aria-label="项目特性">
-                        <span>Windows 桌面端</span>
-                        <span>社区维护版</span>
-                        <span>AI 辅助修改</span>
-                        <span>本地数据优先</span>
-                    </div>
+        <div class="desktop-shell">
+            <header class="titlebar">
+                <div class="app-title">
+                    <img src="./assets/VRCX.png" alt="" />
+                    <span>VRCX-Luo Nightly 2026.6.15</span>
                 </div>
+                <div class="window-actions" aria-hidden="true">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </header>
 
-                <div class="app-preview" aria-label="VRCX-Luo 功能概览">
-                    <div class="window-bar">
-                        <div class="window-dots" aria-hidden="true">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                        <div class="window-title">
-                            <img src="./assets/VRCX.png" alt="" />
-                            <span>VRCX-Luo</span>
-                        </div>
-                        <span class="window-pill">同步中</span>
+            <div class="app-layout">
+                <aside class="sidebar" aria-label="主导航">
+                    <div class="perf-card" aria-label="性能状态">
+                        <p><b>GPU</b><span>78 C</span><i>81.7%</i></p>
+                        <p><b>MEM</b><span>1122 MB</span><i>35</i></p>
+                        <p><b>CPU</b><span>88 C</span><i>56%</i></p>
+                        <p><b>RAM</b><span>27.74 GB</span><i>39 FPS</i></p>
                     </div>
-                    <div class="preview-grid">
-                        <div class="preview-sidebar">
-                            <b class="active">好友状态</b>
-                            <b>好友位置</b>
-                            <b>游戏日志</b>
-                            <b>通知</b>
-                            <b>图表</b>
+
+                    <nav class="side-nav">
+                        <button class="nav-item" data-view="status"><span>◔</span>好友动态</button>
+                        <button class="nav-item" data-view="location"><span>⌖</span>好友位置</button>
+                        <button class="nav-item" data-view="game"><span>◴</span>游戏日志</button>
+                        <button class="nav-item" data-view="rooms"><span>▦</span>房间玩家列表</button>
+                        <button class="nav-item" data-view="search"><span>⌕</span>搜索</button>
+                        <button class="nav-item" data-view="favorite"><span>☆</span>收藏&星标</button>
+                        <button class="nav-item active" data-view="social"><span>◎</span>社交</button>
+                        <div class="sub-nav">
+                            <button class="sub-item active" data-view="social"><span>☷</span>好友日志</button>
+                            <button class="sub-item" data-view="friends"><span>▤</span>好友列表</button>
+                            <button class="sub-item" data-view="players"><span>▣</span>玩家管理</button>
                         </div>
-                        <div class="preview-main">
-                            <div class="preview-head">
+                        <button class="nav-item" data-view="notice"><span>♢</span>通知</button>
+                        <button class="nav-item" data-view="models"><span>▣</span>我的模型</button>
+                        <button class="nav-item" data-view="charts"><span>◷</span>图表</button>
+                        <button class="nav-item" data-view="tools"><span>⚒</span>工具</button>
+                        <button class="nav-item" data-view="dashboard"><span>▦</span>Dashboard</button>
+                        <button class="nav-item" data-view="open"><span>◉</span>直接打开</button>
+                    </nav>
+
+                    <div class="sidebar-bottom">
+                        <button class="nav-item" data-view="help"><span>?</span>帮助 & 支持</button>
+                        <button class="nav-item" data-view="manage"><span>⚙</span>管理</button>
+                        <button class="nav-item" data-view="collapse"><span>▯</span>折叠菜单</button>
+                    </div>
+                </aside>
+
+                <main class="workspace">
+                    <section class="top-controls">
+                        <label class="select-control">
+                            <span id="filterLabel">筛选好友日志</span>
+                            <select id="typeFilter" aria-labelledby="filterLabel">
+                                <option value="all">全部类型</option>
+                                <option value="friend">新的好友</option>
+                                <option value="request">发送好友申请</option>
+                                <option value="trust">等级变动</option>
+                                <option value="profile">资料归档</option>
+                                <option value="vr">VR 通知</option>
+                            </select>
+                        </label>
+                        <label class="input-control">
+                            <span>搜索好友日志</span>
+                            <input id="logSearch" type="search" placeholder="搜索匿名玩家、类型或备注" autocomplete="off" />
+                        </label>
+                        <button class="search-button" id="focusSearch" type="button"><span>⌕</span>搜索 <kbd>Ctrl</kbd><kbd>K</kbd></button>
+                        <div class="icon-actions">
+                            <button id="refreshButton" type="button" aria-label="刷新">↻</button>
+                            <button id="notifyButton" type="button" aria-label="通知">♢</button>
+                            <button id="settingsButton" type="button" aria-label="设置">⚙</button>
+                        </div>
+                    </section>
+
+                    <section class="content-grid">
+                        <div class="main-panel" data-panel="social">
+                            <div class="panel-title">
                                 <div>
-                                    <strong>动态总览</strong>
-                                    <p>头像、名称、归档和 VR 通知统一整理。</p>
+                                    <h1 id="viewTitle">好友日志</h1>
+                                    <p id="viewSubtitle">交互式预览：筛选、搜索、分页和右侧好友列表都可以点击。</p>
                                 </div>
-                                <span>Live</span>
-                            </div>
-                            <div class="toolbar">
-                                <span>动态</span>
-                                <span>归档</span>
-                                <span>多账户</span>
-                                <span>VR 通知</span>
-                            </div>
-                            <div class="table-row strong">
-                                <span>18:29</span>
-                                <span>归档 Diff</span>
-                                <span>简介变化已标记</span>
-                            </div>
-                            <div class="table-row">
-                                <span>18:23</span>
-                                <span>头像名称</span>
-                                <span>统一玩家显示</span>
-                            </div>
-                            <div class="table-row">
-                                <span>18:22</span>
-                                <span>VR 叠加</span>
-                                <span>通知已汉化</span>
-                            </div>
-                            <div class="chart-card">
-                                <div>
-                                    <strong>自动构建测试版本</strong>
-                                    <p>推送后由 Actions 生成可下载版本。</p>
+                                <div class="panel-tabs" role="tablist" aria-label="日志筛选">
+                                    <button class="chip active" data-filter="all" type="button">全部</button>
+                                    <button class="chip" data-filter="friend" type="button">好友</button>
+                                    <button class="chip" data-filter="profile" type="button">归档</button>
+                                    <button class="chip" data-filter="vr" type="button">VR</button>
                                 </div>
-                                <div class="sparkline">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
+                            </div>
+
+                            <div class="table-wrap">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>时间 <span>↑↓</span></th>
+                                            <th>类型</th>
+                                            <th>玩家</th>
+                                            <th>备注</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="logTable"></tbody>
+                                </table>
+                            </div>
+
+                            <div class="pager">
+                                <label>
+                                    每页显示行数
+                                    <select id="pageSize">
+                                        <option value="8">8</option>
+                                        <option value="10" selected>10</option>
+                                        <option value="12">12</option>
+                                    </select>
+                                </label>
+                                <button id="prevPage" type="button">‹ 上一页</button>
+                                <div id="pageNumbers" class="page-numbers"></div>
+                                <button id="nextPage" type="button">下一页 ›</button>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </section>
 
-            <section id="features" class="section">
-                <div class="section-heading">
-                    <p class="eyebrow">Highlights</p>
-                    <h2>围绕 VRCX-Luo 的实际使用场景继续补强。</h2>
-                </div>
-                <div class="feature-grid">
-                    <article>
-                        <span class="icon">01</span>
-                        <h3>资料归档与 Diff</h3>
-                        <p>保留用户资料快照，归档弹窗可查看与上次归档的差异，方便回看简介、状态和资料变化。</p>
-                    </article>
-                    <article>
-                        <span class="icon">02</span>
-                        <h3>头像 + 名字显示</h3>
-                        <p>把玩家名称展示统一成头像或模型图加名称，减少只看到 ID 或单列模型信息时的割裂感。</p>
-                    </article>
-                    <article>
-                        <span class="icon">03</span>
-                        <h3>多账户与 2FA</h3>
-                        <p>优化保存账户、头像切换和二步验证提示，避免多账户登录时因为单个账户等待验证而打断流程。</p>
-                    </article>
-                    <article>
-                        <span class="icon">04</span>
-                        <h3>VR 叠加与通知</h3>
-                        <p>继续整理 VR 内通知、手背卡片、加入实例和汉化细节，让桌面与 VR 场景的信息更一致。</p>
-                    </article>
-                </div>
-            </section>
+                        <aside class="friends-panel" aria-label="好友列表">
+                            <div class="friend-tabs">
+                                <button class="friend-tab active" data-friend-tab="online" type="button">好友 <span id="friendCount"></span></button>
+                                <button class="friend-tab" data-friend-tab="tracking" type="button">追踪非好友 <span>(0)</span></button>
+                            </div>
+                            <div class="self-card">
+                                <button class="section-toggle" type="button" data-toggle="self">⌄ 我</button>
+                                <div class="friend-item self">
+                                    <div class="avatar muted"><span>我</span><i></i></div>
+                                    <div>
+                                        <strong>八千洛代</strong>
+                                        <p><span class="flag">JP</span> 中文吧 Chinese Bar 8.1.1</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="section-toggle" type="button" data-toggle="online">⌄ 在线 — <span id="onlineCount">15</span></button>
+                            <div id="friendList" class="friend-list"></div>
+                        </aside>
+                    </section>
+                </main>
+            </div>
 
-            <section class="split-section">
-                <div>
-                    <p class="eyebrow">For daily use</p>
-                    <h2>适合想继续使用 VRCX，但又希望细节更贴合现状的玩家。</h2>
-                </div>
-                <div class="check-list">
-                    <p>整理好友在线、位置、实例与状态变化。</p>
-                    <p>追踪资料归档、简介 Diff 和模型相关变更。</p>
-                    <p>使用头像化玩家显示、多账户切换和本地缓存补全名称。</p>
-                    <p>通过 Actions 自动构建测试版本，减少手动打包成本。</p>
-                </div>
-            </section>
+            <footer class="statusbar">
+                <span><i></i>代理服务器</span>
+                <span><i></i>SteamVR</span>
+                <span class="ok"><i></i>游戏状态 54分钟</span>
+                <span><i></i>自动跟随</span>
+                <span class="ok"><i></i>服务器状态</span>
+                <span class="ok"><i></i>WebSocket</span>
+                <a class="grow repo-link" href="https://github.com/yixijun/VRCX-Luo" target="_blank" rel="noreferrer">
+                    ▶ https://github.com/yixijun/VRCX-Luo
+                </a>
+                <span>22:58 UTC+8</span>
+                <span>界面缩放 112.00%</span>
+                <span class="ok"><i></i>同步</span>
+                <span>运行时长 04:29:43</span>
+            </footer>
 
-            <section id="notice" class="notice">
-                <div>
-                    <p class="eyebrow">Notice</p>
-                    <h2>说明与边界</h2>
-                </div>
-                <p>
-                    VRCX-Luo 是从
-                    <a class="text-link" href="https://github.com/FuLuTang/VRCX-jirai" target="_blank" rel="noreferrer">FuLuTang/VRCX-jirai</a>
-                    继续维护出来的个人项目；该项目源自原版 VRCX。由于直接来源分支长期未继续更新，我使用 AI 辅助进行修复、整理和功能补充，让它还能跟上自己的使用需求。它不隶属于 VRChat Inc.，也不是 VRCX 官方版本。项目功能基于 VRCX 系列工具与 VRChat 可访问的数据和本地记录构建。请尊重他人隐私，并根据 VRChat 的可见性设置合理使用。
-                </p>
-            </section>
-
-            <section id="repo" class="deploy-card">
-                <div>
-                    <p class="eyebrow">Open source</p>
-                    <h2>前往仓库获取源码与版本发布。</h2>
-                    <p>
-                        你可以在 GitHub 查看 VRCX-Luo 的源代码、下载最新版本、跟踪构建状态或提交反馈。直接来源项目为
-                        <a class="text-link" href="https://github.com/FuLuTang/VRCX-jirai" target="_blank" rel="noreferrer">FuLuTang/VRCX-jirai</a>，
-                        原始上游项目为
-                        <a class="text-link" href="https://github.com/vrcx-team/VRCX" target="_blank" rel="noreferrer">vrcx-team/VRCX</a>。
-                    </p>
-                </div>
-                <div class="deploy-actions">
-                    <a class="button primary" href="https://github.com/yixijun/VRCX-Luo" target="_blank" rel="noreferrer">
-                        打开 GitHub 仓库
-                    </a>
-                    <a class="button secondary" href="https://github.com/yixijun/VRCX-Luo/actions" target="_blank" rel="noreferrer">
-                        查看 Actions
-                    </a>
-                </div>
-            </section>
-        </main>
-
-        <footer>
-            <span>VRCX-Luo</span>
-            <span>Based on FuLuTang/VRCX-jirai, maintained with AI-assisted fixes and feature updates.</span>
-            <a href="https://github.com/yixijun/VRCX-Luo" target="_blank" rel="noreferrer">github.com/yixijun/VRCX-Luo</a>
-        </footer>
+            <div id="toast" class="toast" role="status" aria-live="polite"></div>
+        </div>
     </body>
 </html>
