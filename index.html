@@ -60,19 +60,33 @@
 
                 <div class="app-preview" aria-label="VRCX-Luo 功能概览">
                     <div class="window-bar">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+                        <div class="window-dots" aria-hidden="true">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="window-title">
+                            <img src="./assets/VRCX.png" alt="" />
+                            <span>VRCX-Luo</span>
+                        </div>
+                        <span class="window-pill">同步中</span>
                     </div>
                     <div class="preview-grid">
                         <div class="preview-sidebar">
-                            <b>好友状态</b>
+                            <b class="active">好友状态</b>
                             <b>好友位置</b>
                             <b>游戏日志</b>
                             <b>通知</b>
                             <b>图表</b>
                         </div>
                         <div class="preview-main">
+                            <div class="preview-head">
+                                <div>
+                                    <strong>动态总览</strong>
+                                    <p>头像、名称、归档和 VR 通知统一整理。</p>
+                                </div>
+                                <span>Live</span>
+                            </div>
                             <div class="toolbar">
                                 <span>动态</span>
                                 <span>归档</span>
@@ -99,7 +113,11 @@
                                     <strong>自动构建测试版本</strong>
                                     <p>推送后由 Actions 生成可下载版本。</p>
                                 </div>
-                                <div class="sparkline"></div>
+                                <div class="sparkline">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
                             </div>
                         </div>
                     </div>
