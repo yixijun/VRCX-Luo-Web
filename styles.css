@@ -211,6 +211,7 @@ a {
 
 .hero-card,
 .feature-section,
+.workflow-section,
 .demo-section,
 .notice-section {
     border: 1px solid var(--line);
@@ -263,6 +264,7 @@ a {
 }
 
 .feature-section,
+.workflow-section,
 .demo-section,
 .notice-section {
     margin-bottom: 28px;
@@ -288,10 +290,18 @@ a {
     line-height: 1.72;
 }
 
-.feature-grid {
+.feature-grid,
+.workflow-grid {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 14px;
+}
+
+.feature-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.workflow-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .feature-grid article {
@@ -332,6 +342,28 @@ a {
     margin: 0;
     color: var(--muted);
     line-height: 1.68;
+}
+
+.workflow-grid div {
+    padding: 18px;
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    background:
+        linear-gradient(135deg, rgba(36, 213, 31, 0.08), transparent),
+        #1d1d1d;
+}
+
+.workflow-grid strong {
+    display: block;
+    margin-bottom: 8px;
+    color: #fff;
+    font-size: 20px;
+}
+
+.workflow-grid p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.66;
 }
 
 .desktop-shell {
@@ -1072,6 +1104,10 @@ tbody tr {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
+    .workflow-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .app-layout {
         grid-template-columns: 88px minmax(0, 1fr);
     }
@@ -1228,6 +1264,7 @@ tbody tr {
     }
 
     .feature-section,
+    .workflow-section,
     .demo-section,
     .notice-section,
     .hero-card {
@@ -1235,6 +1272,10 @@ tbody tr {
     }
 
     .feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .workflow-grid {
         grid-template-columns: 1fr;
     }
 
